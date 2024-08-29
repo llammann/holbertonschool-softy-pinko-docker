@@ -1,0 +1,26 @@
+version: '3'
+services:
+  back-end:
+    build:
+      context: .
+      dockerfile: Dockerfile-back-end
+    image: softy-pinko-back-end:task4
+    ports:
+      - "5252:5252"
+    networks:
+      - task4-network
+
+  front-end:
+    build:
+      context: .
+      dockerfile: Dockerfile-front-end
+    image: softy-pinko-front-end:task4
+    ports:
+      - "80:80"
+    networks:
+      - task4-network
+
+networks:
+  task4-network:
+    driver: bridge
+
