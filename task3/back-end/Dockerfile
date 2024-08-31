@@ -1,6 +1,6 @@
 FROM ubuntu:latest
 
-# Update and upgrade the system
+# Update & upgrade the system
 RUN apt-get update && apt-get upgrade -y
 
 # Install Python and pip
