@@ -6,7 +6,7 @@ services:
       dockerfile: Dockerfile
     image: softy-pinko-front-end:task5
     expose:
-      - "9000"  # Keep it internally accessible only
+      - "9000"
 
   back-end:
     build:
@@ -14,7 +14,7 @@ services:
       dockerfile: Dockerfile
     image: softy-pinko-back-end:task5
     expose:
-      - "5252"  # Keep it internally accessible only
+      - "5252"
 
   proxy:
     build:
