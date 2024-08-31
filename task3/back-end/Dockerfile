@@ -1,13 +1,23 @@
 FROM ubuntu:latest
 
-RUN apt-get update && apt-get upgrade -y && \
-    apt-get install -y python3 python3-pip
+# Update and upgrade the system
+RUN apt-get update && apt-get upgrade -y
 
-COPY requirements.txt /app/requirements.txt
-RUN pip3 install -r /app/requirements.txt
+# Install Python and pip
+RUN apt-get install -y python3 python3-pip
 
-COPY ./api.py /app/api.py
+# Remove the EXTERNALLY-MANAGED file if it exists (this may not always be necessary)
+RUN rm -f /usr/lib/python*/EXTERNALLY-MANAGED
+
+# Install necessary Python packages
+RUN pip3 install flask flask-cors
+
+# Set the working directory
 WORKDIR /app
 
+# Copy the application code to the container
+COPY api.py /app/api.py
+
+# Define the command to run the application
 CMD ["python3", "api.py"]
 
